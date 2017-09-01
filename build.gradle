@@ -1,0 +1,38 @@
+group 'com.example.stackoverflow'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'com.example.stackoverflow.DemoApplication'
+
+ext {
+    dropwizardVersion = '1.1.0'
+    retrofitVersion = '2.3.0'
+    okHttpVersion = '3.5.0'
+    jerseyVersion = '2.25.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "io.dropwizard:dropwizard-core:$dropwizardVersion"
+    compile "io.dropwizard:dropwizard-testing:$dropwizardVersion"
+
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    compile "com.squareup.okhttp3:okhttp-urlconnection:$okHttpVersion"
+
+    testCompile "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-grizzly2:$jerseyVersion"
+}
+
+run {
+    args 'server', 'demo.yml'
+}
+
