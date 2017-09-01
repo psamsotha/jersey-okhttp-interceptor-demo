@@ -40,7 +40,8 @@ public class ClientBinder extends AbstractBinder {
                 .proxy(true);
 
         bindFactory(ClientFactories.MessageClientFactory.class)
-                .to(MessageClient.class);
+                .to(MessageClient.class)
+                .in(Singleton.class);
 
         bind(new BaseUrlProvider(this.baseUrl))
                 .to(BaseUrlProvider.class);
