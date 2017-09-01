@@ -18,6 +18,9 @@ public class UserFactory implements Factory<User> {
     @Override
     public User provide() {
         Cookie cookie = request.get().getCookies().get("User-Id");
+        // Can't return null from here.
+        // So we just set the user name to null.
+        // The interceptor will just check for the null with the isValid method
         return cookie != null
                 ? new User(cookie.getValue())
                 : new User(null);

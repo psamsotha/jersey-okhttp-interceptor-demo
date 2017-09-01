@@ -17,6 +17,7 @@ import javax.inject.Singleton;
 import java.io.IOException;
 import java.util.Objects;
 
+
 public class ClientBinder extends AbstractBinder {
 
     private String baseUrl;
