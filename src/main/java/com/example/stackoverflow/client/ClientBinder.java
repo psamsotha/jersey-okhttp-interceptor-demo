@@ -20,7 +20,7 @@ import java.util.Objects;
 
 public class ClientBinder extends AbstractBinder {
 
-    private String baseUrl;
+    private final String baseUrl;
 
 
     public ClientBinder(String baseUrl) {
@@ -89,7 +89,7 @@ public class ClientBinder extends AbstractBinder {
             final User user = userProvider.get();
             if (user.isValid()) {
                 return chain.proceed(chain.request().newBuilder()
-                        .addHeader("User-Id", userProvider.get().getName())
+                        .addHeader("User-Id", user.getName())
                         .build());
             } else {
                 return chain.proceed(chain.request());
